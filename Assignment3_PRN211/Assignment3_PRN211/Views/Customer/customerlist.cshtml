@@ -1,0 +1,38 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using Assignment3_PRN211.Models
+@model List<Customer>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+List Customer:<br />
+<button><a asp-controller="Customer" asp-action="Add">Add</a></button>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>BirthDate</th>
+        <th>Gender</th>
+        <th>Address</th>
+    </tr>
+    @foreach(var c in Model){
+    <tr>
+        <td>@c.CustomerId</td>
+        <td>@c.CustomerName</td>
+        <td>@c.Birthdate</td>
+            @if (@c.Gender == true)
+            {
+                <td>Male</td>
+            }
+            else
+            {
+                <td>FeMale</td>
+            }
+        <td>@c.Address</td>
+        <td><a asp-controller="Customer" asp-action="Update" asp-route-id =@c.CustomerId>Update</a></td>
+        <td><a asp-controller="Customer" asp-action="Delete" asp-route-id =@c.CustomerId>Delete</a></td>
+     </tr>
+        
+    }
+</table>

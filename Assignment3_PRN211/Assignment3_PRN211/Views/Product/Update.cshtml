@@ -1,0 +1,57 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using Assignment3_PRN211.Models
+@model Product
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form asp-controller="Product" asp-action="Update" method="post">
+    <table>
+        <tr>
+            <td>ProductID</td>
+            <td><input type="text" asp-for=ProductId value="@Model.ProductId" readonly/></td>
+        </tr>
+          <tr>
+            <td>ProductName</td>
+            <td><input type="text" asp-for=ProductName value="@Model.ProductName"/></td>
+        </tr>
+          <tr>
+            <td>Price</td>
+            <td><input type="text" asp-for=UnitPrice value="@Model.UnitPrice"/></td>
+        </tr>
+          <tr>
+            <td>UnitInStock</td>
+            <td><input type="text" asp-for=UnitsInStock value="@Model.UnitsInStock"/></td>
+        </tr>
+          <tr>
+            <td>CategoryId</td>
+            <td><input type="text" asp-for=CategoryId  value="@Model.CategoryId"/></td>
+        </tr>
+          <tr>
+            <td>Image</td>
+            <td><input type="text" asp-for=Image value="@Model.Image"/></td>
+        </tr>
+          <tr>
+            <td>Discontinued</td>
+
+            @if (@Model.Discontinued == true) {
+                <td>
+                    <input type="radio" asp-for=Discontinued value="true" checked/> yes
+                    <input type="radio" asp-for=Discontinued value="false" /> no
+                </td>
+            }
+            else
+            {
+                <td>
+                    <input type="radio" asp-for=Discontinued value="true" /> yes
+                    <input type="radio" asp-for=Discontinued value="false" checked/> no
+                </td>
+            }
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update"/></td>
+        </tr>
+    </table>
+</form>

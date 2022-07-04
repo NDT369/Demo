@@ -1,0 +1,57 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using Assignment3_PRN211.Models
+@model List<Product>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+List Category:
+<form asp-controller="Product" asp-action="Index" method="post" id="frmCate">
+<select name="cateId" onchange="chooseCate()">
+    <option value="0">All</option>
+    @foreach(var c in @ViewBag.Categories)
+    {
+            @if (@ViewBag.SelectedCateId == @c.CategoryId)
+            {
+                <option value="@c.CategoryId" selected>@c.CategoryName</option>
+            }else {<option value="@c.CategoryId">@c.CategoryName</option>}
+        }
+</select>
+</form>
+
+<script>
+function chooseCate() {
+    document.getElementById("frmCate").submit();
+}
+</script>
+
+List Product:
+<button><a asp-controller="Product" asp-action="Add">Add</a></button>
+
+<table border="1px">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Unit In Stock</th>
+        <th>Image</th>
+        <th>CategoryID</th>
+        <th>Discontinued</th>
+    </tr>
+    @foreach(var p in Model)
+    {
+        <tr>
+            <td>@p.ProductId</td>
+            <td>@p.ProductName</td>
+            <td>@p.UnitPrice</td>
+            <td>@p.UnitsInStock</td>
+            <td>@p.Image</td>
+            <td>@p.CategoryId</td>
+            <td>@p.Discontinued</td>
+            <td><a asp-controller="Product" asp-action="Update" asp-route-id = "@p.ProductId">Update</a></td>
+            <td><a asp-controller="Product" asp-action="Delete" asp-route-id = "@p.ProductId">Delete</a></td>
+        </tr>
+    }
+</table>

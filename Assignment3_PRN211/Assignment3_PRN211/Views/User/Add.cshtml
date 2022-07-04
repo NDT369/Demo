@@ -1,0 +1,49 @@
+﻿@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
+@using Assignment3_PRN211.Models
+@model User
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if(@ViewBag.Mess != null)
+{
+    <h3>@ViewBag.Mess</h3>
+}
+<form asp-controller="User" asp-action="Add" method="post">
+    <table>
+        <tr>
+            <td>Account</td>
+            <td><input type="text" asp-for=Account/></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" asp-for=Password/></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="texe" asp-for=Name/></td>
+        </tr>
+        <tr>
+        <td>Gender</td>
+
+            <td>
+                <input type="radio" asp-for=Gender value="true" checked/> Male
+                <input type="radio" asp-for=Gender value="false" /> Female
+            </td>
+          
+     
+
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" asp-for=Address/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Add"/>
+            </td>
+        </tr>
+    </table>
+</form>
